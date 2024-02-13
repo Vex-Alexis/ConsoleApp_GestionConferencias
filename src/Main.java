@@ -10,7 +10,7 @@ public class Main {
         charlas.add(new Charla("Lua for the Masses", 30));
         charlas.add(new Charla("Ruby Errors from Mismatched Gem Versions", 45));
         charlas.add(new Charla("Common Ruby Errors", 45));
-        charlas.add(new Charla("Rails for Python Developers lightning", 45));
+        charlas.add(new Charla("Rails for Python Developers lightning", 60));
         charlas.add(new Charla("Communicating Over Distanceon", 60));
         charlas.add(new Charla("Accounting-Driven Development", 45));
         charlas.add(new Charla("Woah", 30));
