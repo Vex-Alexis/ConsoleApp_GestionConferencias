@@ -37,6 +37,6 @@ Para ejecutar la aplicación desde la línea de comandos:
    javac *.java
 ```
 3. Utiliza el comando java seguido del nombre de la clase principal (Main) que contiene el método main
-
-   ```bash
+```bash
    java Main
+```
