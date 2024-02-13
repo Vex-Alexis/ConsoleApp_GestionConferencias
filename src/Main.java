@@ -26,11 +26,10 @@ public class Main {
         charlas.add(new Charla("User Interface CSS in Rails Apps", 30));
         // Agrega todas las charlas restantes
 
-        // Ordena las charlas en orden descendente por duración
-        Collections.sort(charlas);
-
         Pista pista = new Pista();
         pista.programarCharlas(charlas);
+
+        // Imprimir programa
         pista.imprimirPrograma();
     }
 }

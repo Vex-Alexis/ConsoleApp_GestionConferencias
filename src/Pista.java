@@ -1,14 +1,24 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Pista {
-    List<Sesion> sesiones = new ArrayList<>();
+    private static final int DURACION_MANANA = 180;
+    private static final int DURACION_TARDE = 240;
+    private static final int HORA_INICIO_TARDE = 13 * 60;
+
+    private List<Sesion> sesiones = new ArrayList<>();
 
     public Pista() {
-        sesiones.add(new Sesion(180)); // Mañana
-        sesiones.add(new Sesion(240)); // Tarde
+        sesiones.add(new Sesion(DURACION_MANANA));
+        sesiones.add(new Sesion(DURACION_TARDE));
     }
+
+    // GETTER
+    public static int getDuracionTarde() {
+        return DURACION_TARDE;
+    }
+
+
 
     public void programarCharlas(List<Charla> charlas) {
         for (Charla charla : charlas) {
@@ -18,8 +28,7 @@ public class Pista {
                 if (programada) break;
             }
             if (!programada) {
-                // Si no se pudo programar en ninguna sesión, crear una nueva sesión en la tarde
-                Sesion nuevaSesion = new Sesion(240);
+                Sesion nuevaSesion = new Sesion(DURACION_TARDE);
                 nuevaSesion.agregarCharla(charla);
                 sesiones.add(nuevaSesion);
             }
@@ -28,18 +37,26 @@ public class Pista {
 
     public void imprimirPrograma() {
         int numeroPista = 1;
+
         for (Sesion sesion : sesiones) {
             System.out.println("Pista " + numeroPista + ":");
-            int horaInicio = 9 * 60; // 9:00 AM
-            for (Charla charla : sesion.charlas) {
-                System.out.println(String.format("%02d:%02dAM %s %dmin", horaInicio / 60, horaInicio % 60, charla.titulo, charla.duracion));
-                horaInicio += charla.duracion;
+            int horaInicio = 9 * 60;
+
+            for (Charla charla : sesion.getCharlas()) {
+                System.out.println(String.format("%02d:%02dAM %s %dmin", horaInicio / 60, horaInicio % 60, charla.getTitulo(), charla.getDuracion()));
+                horaInicio += charla.getDuracion();
             }
-            if (horaInicio < 12 * 60) {
+
+            if (horaInicio < HORA_INICIO_TARDE) {
                 System.out.println("12:00PM Almuerzo");
             } else {
-                System.out.println("05:00PM Evento de Networking");
+                for (Charla charla : sesion.getCharlasTarde()) {
+                    System.out.println(String.format("%02d:%02dPM %s %dmin", horaInicio / 60, horaInicio % 60, charla.getTitulo(), charla.getDuracion()));
+                    horaInicio += charla.getDuracion();
+                }
             }
+
+            System.out.println("05:00PM Evento de Networking\n");
             numeroPista++;
         }
     }
