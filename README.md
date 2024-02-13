@@ -4,6 +4,18 @@
 
 ConsoleApp_GestionConferencias es una aplicación de consola en Java diseñada para gestionar conferencias y programar charlas de manera eficiente.
 
+## Clonar el Repositorio
+
+Para lonar este repositorio para probar la aplicación en tu máquina local, sigue estos pasos:
+
+1. Abre la terminal en el directorio donde deseas clonar el repositorio.
+
+2. Ejecuta el siguiente comando:
+
+   ```bash
+   git clone https://github.com/Vex-Alexis/ConsoleApp_GestionConferencias.git
+
+
 ## Instrucciones de Compilación
 
 La aplicación está desarrollada en Java con JDK 21 y fue iniciada en IntelliJ IDEA. Para compilar la aplicación, sigue estos pasos:
